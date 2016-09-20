@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	>
+	
+	<import resource="Sony.xml"/>
+	<import resource="Toshiba.xml"/>
+	
+	<bean id="t1000" class="ru.spring.robot.ModelT1000"
+	p:hand-ref="sonyHand" p:leg-ref="toshibaLeg" p:head-ref="sonyHead">
+	
+		<constructor-arg value="black"  type = "String"></constructor-arg>
+		<constructor-arg value="2027"  type = "int"></constructor-arg>
+		<constructor-arg value="true"  type = "boolean"></constructor-arg>	
+	
+	</bean>
+	
+	<bean id="t1000Pool" class = "ru.spring.pool.T1000Pool">
+			<property name = "robotCollection">
+			<list>
+				<ref bean="t1000"/>
+				<ref bean="t1000"/>
+				
+				<bean class="ru.spring.robot.ModelT1000"
+					p:hand-ref="toshibaHand" p:leg-ref="toshibaLeg" p:head-ref="sonyHead">
+	
+						<constructor-arg value="yellow"  type = "String"></constructor-arg>
+						<constructor-arg value="2027"  type = "int"></constructor-arg>
+						<constructor-arg value="true"  type = "boolean"></constructor-arg>	
+	
+				</bean>
+			
+			</list>
+			</property>
+		
+		</bean>
+	
+
+	
+	
+	</beans>
